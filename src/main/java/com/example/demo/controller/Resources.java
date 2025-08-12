@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dto.EventRequest;
 import com.example.demo.service.NotificationInterface;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api")
 public class Resources {
@@ -24,7 +26,7 @@ public class Resources {
 	
 	
 	@PostMapping(path = "/events", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE) 
-	public ResponseEntity<?> addNotification(@RequestBody EventRequest eventRequests) {
+	public ResponseEntity<?> addNotification(@Valid @RequestBody EventRequest eventRequests) {
 		
 		HttpHeaders httpHeaders = new HttpHeaders();
 		return new ResponseEntity<>(notificationInterface.notify(eventRequests), httpHeaders, HttpStatus.OK);

@@ -2,10 +2,22 @@ package com.example.demo.dto;
 
 import java.util.Map;
 
+import com.example.demo.ValidEventPayload;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+
+@ValidEventPayload
 public class EventRequest {
 
+	@NotNull
     private EventType eventType;
+    
+    @NotNull
     private Map<String, Object> payload;
+    
+    @NotBlank
     private String callbackUrl;
 	
     public EventType getEventType() {
