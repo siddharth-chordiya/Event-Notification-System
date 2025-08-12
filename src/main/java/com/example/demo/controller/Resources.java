@@ -30,4 +30,12 @@ public class Resources {
 		return new ResponseEntity<>(notificationInterface.notify(eventRequests), httpHeaders, HttpStatus.OK);
 	}
 	
+	
+	@PostMapping(path = "/callback", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE) 
+	public ResponseEntity<?> callback(@RequestBody String request) {
+		
+		System.out.println("callback received request : "+ request);
+		HttpHeaders httpHeaders = new HttpHeaders();
+		return new ResponseEntity<>("Success", httpHeaders, HttpStatus.OK);
+	}
 }
